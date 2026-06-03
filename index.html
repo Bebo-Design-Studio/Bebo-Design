@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BEBO DESIGN</title>
+<title>Abanop Nabil</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Montserrat',sans-serif;
 scroll-behavior:smooth;
 }
 
@@ -22,6 +22,7 @@ color:#fff;
 overflow-x:hidden;
 }
 
+/* NAVBAR */
 header{
 position:fixed;
 width:100%;
@@ -29,17 +30,31 @@ padding:20px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(8px);
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
 .logo{
 font-weight:800;
-letter-spacing:2px;
 font-size:20px;
+letter-spacing:2px;
+color:#F59E0B;
 }
 
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#fff;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#F59E0B;
+}
+
+/* HERO */
 .hero{
 height:100vh;
 background:url('images/banner.webp') center/cover no-repeat;
@@ -93,6 +108,7 @@ transform:scale(1.05);
 background:#ffb703;
 }
 
+/* SECTIONS */
 .section{
 padding:100px 8%;
 text-align:center;
@@ -134,6 +150,7 @@ font-weight:800;
 color:#F59E0B;
 }
 
+/* ABOUT */
 .about{
 max-width:700px;
 margin:auto;
@@ -141,25 +158,38 @@ line-height:1.8;
 color:#ddd;
 }
 
+/* CONSULT */
 .consult{
 background:linear-gradient(135deg,#7C3AED,#F59E0B);
 padding:80px 8%;
 border-radius:20px;
 margin:100px 8%;
+text-align:center;
 }
 
 .consult h2{
-color:#fff;
 margin-bottom:20px;
 }
 
-.consult p{
-color:#fff;
-max-width:700px;
-margin:auto;
-line-height:1.8;
+/* FOOTER */
+footer{
+background:#111;
+padding:40px 8%;
+text-align:center;
 }
 
+footer a{
+margin:0 15px;
+color:#F59E0B;
+text-decoration:none;
+}
+
+footer p{
+margin-top:20px;
+color:#888;
+}
+
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -187,24 +217,24 @@ to{opacity:1;transform:translateY(0);}
 <body>
 
 <header>
-<div class="logo">Abanop Design</div>
+<div class="logo">Abanop Nabil</div>
+<nav>
+<a href="#logo">Logo</a>
+<a href="#social">Social Media</a>
+<a href="#print">Print</a>
+<a href="#about">About Me</a>
+</nav>
 </header>
 
 <section class="hero">
 <div class="hero-content">
 <h1>POWER YOUR BRAND</h1>
 <p>Logo • Social Media • Print Design</p>
-<a href="https://wa.me/201092278234?text=I%20want%20a%20free%20consultation" class="btn">اطلب استشارة مجانية</a>
+<a href="https://wa.me/201092278234?text=I%20want%20a%20free%20consultation" class="btn">Free Consultation</a>
 </div>
 </section>
 
-<section class="section" id="clients">
-<h2>Trusted By</h2>
-<div class="counter" id="counter">0</div>
-<p>Clients</p>
-</section>
-
-<section class="section">
+<section class="section" id="logo">
 <h2>Logo Design</h2>
 <div class="grid">
 <img src="images/logo1.webp">
@@ -214,7 +244,7 @@ to{opacity:1;transform:translateY(0);}
 </div>
 </section>
 
-<section class="section">
+<section class="section" id="social">
 <h2>Social Media</h2>
 <div class="grid">
 <img src="images/social1.webp">
@@ -226,26 +256,43 @@ to{opacity:1;transform:translateY(0);}
 </div>
 </section>
 
-<section class="section">
-<h2>ABOUT ME</h2>
+<section class="section" id="print">
+<h2>Print Design</h2>
+<div class="grid">
+<img src="images/logo1.webp">
+<img src="images/logo2.webp">
+</div>
+</section>
+
+<section class="section" id="about">
+<h2>About Me</h2>
 <div class="about">
-أنا ابانوب نبيل، مصمم جرافيك متخصص في بناء الهويات البصرية وتصميم محتوى سوشيال ميديا بساعد البراندات تظهر بشكل أقوى وتنافس بثقة في السوق.
+I’m Abanop Nabil, a graphic designer specialized in building strong visual identities and impactful social media designs that help brands grow and compete confidently.
 </div>
 </section>
 
 <section class="consult">
-<h2>مش متأكد تبدأ منين؟</h2>
+<h2>Not Sure Where To Start?</h2>
 <p>
-ابعتلنا تفاصيل نشاطك وهنتناقش سوا — هنعرف البراند بتاعك محتاج إيه، لو عندك هوية هنطورها، ولو لسه معندكش هنبنيلك براند قوي يقدر ينافس.  
-الاستشارة مجانية تمامًا ✅
+Send your business details and let's discuss together — we will identify what your brand needs. If you already have a brand identity, we’ll develop it. If not, we’ll build you a powerful brand that competes strongly in the market.  
+Free consultation ✅
 </p>
-<a href="https://wa.me/201092278234?text=I%20want%20a%20free%20consultation" class="btn">ابدأ دلوقتي</a>
+<a href="https://wa.me/201092278234?text=I%20want%20a%20free%20consultation" class="btn">Start Now</a>
 </section>
 
-<a href="https://wa.me/201092278234?text=Hello" class="whatsapp">💬</a>
+<footer>
+<div>
+<a href="#">Behance</a>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+<a href="#">Facebook</a>
+</div>
+<p>© 2026 Abanop Nabil. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/201092278234" class="whatsapp">💬</a>
 
 <script>
-
 // Scroll Animation
 const sections=document.querySelectorAll('.section');
 window.addEventListener('scroll',()=>{
@@ -255,27 +302,6 @@ sec.classList.add('show');
 }
 });
 });
-
-// Counter Animation
-let started=false;
-window.addEventListener('scroll',()=>{
-let counter=document.getElementById("counter");
-let position=counter.getBoundingClientRect().top;
-if(position<window.innerHeight && !started){
-started=true;
-let count=0;
-let target=89;
-let interval=setInterval(()=>{
-if(count<target){
-count++;
-counter.innerText=count+"+";
-}else{
-clearInterval(interval);
-}
-},20);
-}
-});
-
 </script>
 
 </body>
