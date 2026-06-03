@@ -483,7 +483,7 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('mousemove', (e) => {
 if (!isDragging) return;
-const walk = (e.pageX - startX);
+const walk = (e.pageX - startX) * 0.6;
 gallery.scrollLeft = scrollLeft - walk;
 });
 
@@ -504,8 +504,8 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('touchmove', (e) => {
 if (!isDragging) return;
-const walk = (e.touches[0].pageX - startX);
-gallery.scrollLeft = scrollLeft - walk;
+const walk = (e.touches[0].pageX - startX) * 0.6;
+  gallery.scrollLeft = scrollLeft - walk;
 });
 
 gallery.addEventListener('touchend', () => {
