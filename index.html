@@ -27,7 +27,7 @@ overflow-x:hidden;
 header{
 position:fixed;
 width:100%;
-padding:20px 8%;
+padding:25px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -37,9 +37,14 @@ z-index:1000;
 }
 
 .logo img{
-height:45px;
+height:70px;   /* كبرناه */
 width:auto;
 transition:0.3s;
+filter: drop-shadow(0 0 10px rgba(124,58,237,0.6));
+}
+
+.logo img:hover{
+transform:scale(1.08);
 }
 
 .logo img:hover{
