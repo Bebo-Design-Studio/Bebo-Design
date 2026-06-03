@@ -461,12 +461,25 @@ const walk = (x - startX);
 gallery.scrollLeft = scrollLeft - walk;
 });
 });
-  setInterval(() => {
+
+
 document.querySelectorAll('.scroll-gallery').forEach(gallery => {
+
+let autoScroll = setInterval(() => {
 gallery.scrollLeft += 1;
-});
 }, 20);
-</script>
+
+gallery.addEventListener('mousedown', () => {
+clearInterval(autoScroll);
+});
+
+gallery.addEventListener('mouseup', () => {
+autoScroll = setInterval(() => {
+gallery.scrollLeft += 1;
+}, 20);
+});
+
+});
 
 </body>
 </html>
