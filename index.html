@@ -461,21 +461,30 @@ const walk = (x - startX);
 gallery.scrollLeft = scrollLeft - walk;
 });
 });
-
 document.querySelectorAll('.scroll-gallery').forEach(gallery => {
 
-let autoScroll = setInterval(() => {
-gallery.scrollLeft += 1;
-}, 20);
+let isDragging = false;
+let autoSpeed = 0.8;
+
+function autoMove() {
+if (!isDragging) {
+gallery.scrollLeft += autoSpeed;
+}
+requestAnimationFrame(autoMove);
+}
+
+autoMove();
 
 gallery.addEventListener('mousedown', () => {
-clearInterval(autoScroll);
+isDragging = true;
 });
 
 gallery.addEventListener('mouseup', () => {
-autoScroll = setInterval(() => {
-gallery.scrollLeft += 1;
-}, 20);
+isDragging = false;
+});
+
+gallery.addEventListener('mouseleave', () => {
+isDragging = false;
 });
 
 });
