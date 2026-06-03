@@ -432,39 +432,12 @@ sec.classList.add('show');
 }
 });
 });
-  const galleries = document.querySelectorAll('.scroll-gallery');
-
-galleries.forEach(gallery => {
-let isDown = false;
-let startX;
-let scrollLeft;
-
-gallery.addEventListener('mousedown', (e) => {
-isDown = true;
-startX = e.pageX - gallery.offsetLeft;
-scrollLeft = gallery.scrollLeft;
-});
-
-gallery.addEventListener('mouseleave', () => {
-isDown = false;
-});
-
-gallery.addEventListener('mouseup', () => {
-isDown = false;
-});
-
-gallery.addEventListener('mousemove', (e) => {
-if(!isDown) return;
-e.preventDefault();
-const x = e.pageX - gallery.offsetLeft;
-const walk = (x - startX);
-gallery.scrollLeft = scrollLeft - walk;
-});
-});
-document.querySelectorAll('.scroll-gallery').forEach(gallery => {
+ document.querySelectorAll('.scroll-gallery').forEach(gallery => {
 
 let isDragging = false;
-let autoSpeed = 0.8;
+let startX;
+let scrollLeft;
+let autoSpeed = 0.6;
 
 function autoMove() {
 if (!isDragging) {
@@ -472,11 +445,19 @@ gallery.scrollLeft += autoSpeed;
 }
 requestAnimationFrame(autoMove);
 }
-
 autoMove();
 
-gallery.addEventListener('mousedown', () => {
+// Mouse
+gallery.addEventListener('mousedown', (e) => {
 isDragging = true;
+startX = e.pageX;
+scrollLeft = gallery.scrollLeft;
+});
+
+gallery.addEventListener('mousemove', (e) => {
+if (!isDragging) return;
+const walk = (e.pageX - startX);
+gallery.scrollLeft = scrollLeft - walk;
 });
 
 gallery.addEventListener('mouseup', () => {
@@ -484,6 +465,23 @@ isDragging = false;
 });
 
 gallery.addEventListener('mouseleave', () => {
+isDragging = false;
+});
+
+// Touch
+gallery.addEventListener('touchstart', (e) => {
+isDragging = true;
+startX = e.touches[0].pageX;
+scrollLeft = gallery.scrollLeft;
+});
+
+gallery.addEventListener('touchmove', (e) => {
+if (!isDragging) return;
+const walk = (e.touches[0].pageX - startX);
+gallery.scrollLeft = scrollLeft - walk;
+});
+
+gallery.addEventListener('touchend', () => {
 isDragging = false;
 });
 
