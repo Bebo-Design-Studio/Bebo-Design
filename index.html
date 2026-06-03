@@ -348,27 +348,6 @@ animation:fadeZoom 1.2s ease infinite alternate;
 from{transform:scale(0.9); opacity:0.6;}
 to{transform:scale(1.1); opacity:1;}
 }
-  #backToTop{
-position:fixed;
-bottom:90px;
-right:20px;
-background:#F59E0B;
-color:#000;
-border:none;
-width:45px;
-height:45px;
-border-radius:50%;
-font-size:20px;
-cursor:pointer;
-display:none;
-z-index:999;
-transition:all 0.3s ease;
-box-shadow:0 5px 20px rgba(0,0,0,0.4);
-}
-
-#backToTop:hover{
-transform:scale(1.1);
-}
 </style>
 </head>
 
@@ -538,25 +517,6 @@ setTimeout(() => {
 loader.style.display = 'none';
 }, 600);
 });
-  const backToTop = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-if(window.scrollY > 300){
-backToTop.style.display = "block";
-}else{
-backToTop.style.display = "none";
-}
-});
-
-backToTop.addEventListener("click", () => {
-window.scrollTo({
-top: 0,
-behavior: "smooth"
-});
-});
-  <button id="backToTop">↑</button>
-
 </script>
-
 </body>
 </html>
