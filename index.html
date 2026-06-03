@@ -190,6 +190,7 @@ transform:scale(1.05);
 position:relative;
 overflow:hidden;
 border-radius:12px;
+flex: 0 0 auto;
 }
 
 .image-box img{
@@ -293,15 +294,19 @@ box-shadow:0 5px 20px rgba(0,0,0,0.4);
 from{opacity:0;transform:translateY(40px);}
 to{opacity:1;transform:translateY(0);}
 }
-  @media (max-width: 768px) {
-
+@media (max-width: 768px) {
 .image-box{
-min-width:250px;   /* أصغر على الموبايل */
+@media (max-width: 768px) {
+.image-box{
+flex: 0 0 auto;
 }
-
 .scroll-gallery img{
-height:220px;      /* ارتفاع أقل عشان تبقى مناسبة */
+height:220px;
+width:auto;
 }
+}}
+
+
 
 }
 </style>
