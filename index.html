@@ -36,11 +36,14 @@ backdrop-filter:blur(10px);
 z-index:1000;
 }
 
-.logo{
-font-weight:800;
-font-size:20px;
-letter-spacing:2px;
-color:#F59E0B;
+.logo img{
+height:45px;
+width:auto;
+transition:0.3s;
+}
+
+.logo img:hover{
+transform:scale(1.05);
 }
 
 nav a{
@@ -264,10 +267,13 @@ to{opacity:1;transform:translateY(0);}
 </style>
 </head>
 
-<body>
-
+<body id="top">
 <header>
-<div class="logo">Abanop Nabil</div>
+<div class="logo">
+  <a href="#top">
+    <img src="images/logo.webp" alt="Abanop Nabil Logo">
+  </a>
+</div>
 <nav>
 <a href="#logo">Logo</a>
 <a href="#social">Social Media</a>
