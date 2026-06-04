@@ -162,10 +162,6 @@ overflow-x:auto;
 scroll-behavior:smooth;
 cursor:grab;
 padding-bottom:10px;
-
-user-select: none;
--webkit-user-select: none;
--ms-user-select: none;
 }
 
 .scroll-gallery::-webkit-scrollbar{
@@ -180,10 +176,9 @@ cursor:grabbing;
 height:280px;
 min-width:320px;
 width:auto;
-flex-shrink:0;
+  flex-shrink:0;
 border-radius:15px;
 transition:0.3s;
-pointer-events: none;
 }
 
 
@@ -418,14 +413,11 @@ to{transform:scale(1.1); opacity:1;}
 </section>
 
 <section class="section" id="print">
-  <h2>Print</h2>
-
-  <div class="scroll-gallery">
-    <div class="image-box"><img src="images/print1.webp"></div>
-    <div class="image-box"><img src="images/print2.webp"></div>
-    <div class="image-box"><img src="images/print3.webp"></div>
-  </div>
-
+<h2>Print Design</h2>
+<div class="scroll-gallery">
+  <div class="image-box"><img src="images/logo1.webp"></div>
+<div class="image-box"><img src="images/logo2.webp"></div>
+</div>
 </section>
 
 <section class="section" id="about">
@@ -488,9 +480,9 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('mousemove', (e) => {
 if (!isDragging) return;
-e.preventDefault();   // ✅ السطر المهم
-const walk = (e.pageX - startX) * 0.6;
+const walk = (e.pageX - startX);
 gallery.scrollLeft = scrollLeft - walk;
+});
 
 gallery.addEventListener('mouseup', () => {
 isDragging = false;
@@ -509,10 +501,9 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('touchmove', (e) => {
 if (!isDragging) return;
-e.preventDefault();
-const walk = (e.touches[0].pageX - startX) * 0.6;
+const walk = (e.touches[0].pageX - startX);
 gallery.scrollLeft = scrollLeft - walk;
-}, { passive: false });
+});
 
 gallery.addEventListener('touchend', () => {
 isDragging = false;
