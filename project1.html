@@ -1,83 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Visual Identity Project</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body{
-margin:0;
-font-family:'Montserrat',sans-serif;
-background:#0b0b12;
-color:#fff;
-}
-
-.header{
-padding:40px 8%;
-}
-
-.header a{
-color:#F59E0B;
-text-decoration:none;
-font-weight:600;
-}
-
-.project-container{
-max-width:1100px;
-margin:auto;
-padding:60px 8%;
-}
-
-.project-title{
-font-size:42px;
-font-weight:800;
-color:#F59E0B;
-margin-bottom:20px;
-}
-
-.project-description{
-font-size:18px;
-color:#ccc;
-line-height:1.8;
-margin-bottom:60px;
-max-width:700px;
-}
-
-.project-images img{
-width:100%;
-margin-bottom:40px;
-border-radius:15px;
-}
-</style>
-</head>
-
 <body>
 
-<div class="header">
-<a href="index.html">← Back to Home</a>
-</div>
+<section class="project-hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Brand Name</h1>
+    <p>Visual Identity Design</p>
+  </div>
+</section>
 
-<div class="project-container">
+<section class="project-intro">
+  <div class="container">
+    <h2>About The Project</h2>
+    <p>
+      This visual identity was created to build a powerful and modern brand presence.
+      The goal was to design a clean and strategic identity system that reflects
+      professionalism and clarity.
+    </p>
+  </div>
+  .project-hero{
+position:relative;
+height:80vh;
+background:url('images/visual1.webp') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
 
-<h1 class="project-title">Brand Name</h1>
+.project-hero .overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
 
-<p class="project-description">
-This visual identity project was created to build a strong and modern brand presence.
-The goal was to design a clean logo, color system, and visual language that reflects
-professionalism and clarity.
+.hero-content{
+position:relative;
+z-index:2;
+animation:fadeUp 1s ease forwards;
+opacity:0;
+}
+@keyframes fadeUp{
+from{
+transform:translateY(30px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+.hero-content h1{
+font-size:60px;
+font-weight:800;
+color:#F59E0B;
+margin-bottom:10px;
+}
+
+.hero-content p{
+font-size:20px;
+color:#ccc;
+}
+
+.project-intro{
+padding:120px 8%;
+background:#0f0f1a;
+}
+
+.project-intro h2{
+font-size:32px;
+margin-bottom:20px;
+color:#F59E0B;
+}
+
+.project-intro p{
+max-width:700px;
+line-height:1.8;
+color:#ccc;
+}
+</section>
+<section class="project-details">
+
+<h2>Project Details</h2>
+
+<p>
+Industry: Food & Beverage<br>
+Scope: Logo, Color System, Typography<br>
+Year: 2026
 </p>
 
-<div class="project-images">
-<img src="images/visual1.webp">
-<img src="images/visual1.webp">
-<img src="images/visual1.webp">
-</div>
-
-</div>
-
+</section>
 </body>
-</html>
