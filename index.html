@@ -488,9 +488,9 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('mousemove', (e) => {
 if (!isDragging) return;
+e.preventDefault();   // ✅ السطر المهم
 const walk = (e.pageX - startX) * 0.6;
 gallery.scrollLeft = scrollLeft - walk;
-});
 
 gallery.addEventListener('mouseup', () => {
 isDragging = false;
@@ -509,9 +509,10 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('touchmove', (e) => {
 if (!isDragging) return;
+e.preventDefault();
 const walk = (e.touches[0].pageX - startX) * 0.6;
-  gallery.scrollLeft = scrollLeft - walk;
-});
+gallery.scrollLeft = scrollLeft - walk;
+}, { passive: false });
 
 gallery.addEventListener('touchend', () => {
 isDragging = false;
