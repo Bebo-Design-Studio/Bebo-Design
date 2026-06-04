@@ -1,23 +1,23 @@
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Name – Visual Identity</title>
 
-<section class="project-hero">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>Brand Name</h1>
-    <p>Visual Identity Design</p>
-  </div>
-</section>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 
-<section class="project-intro">
-  <div class="container">
-    <h2>About The Project</h2>
-    <p>
-      This visual identity was created to build a powerful and modern brand presence.
-      The goal was to design a clean and strategic identity system that reflects
-      professionalism and clarity.
-    </p>
-  </div>
-  .project-hero{
+<style>
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:#0b0b12;
+color:#fff;
+}
+
+/* HERO */
+.project-hero{
 position:relative;
 height:80vh;
 background:url('images/visual1.webp') center/cover no-repeat;
@@ -39,6 +39,7 @@ z-index:2;
 animation:fadeUp 1s ease forwards;
 opacity:0;
 }
+
 @keyframes fadeUp{
 from{
 transform:translateY(30px);
@@ -49,6 +50,7 @@ transform:translateY(0);
 opacity:1;
 }
 }
+
 .hero-content h1{
 font-size:60px;
 font-weight:800;
@@ -61,6 +63,7 @@ font-size:20px;
 color:#ccc;
 }
 
+/* INTRO */
 .project-intro{
 padding:120px 8%;
 background:#0f0f1a;
@@ -77,16 +80,70 @@ max-width:700px;
 line-height:1.8;
 color:#ccc;
 }
+
+/* DETAILS */
+.project-details{
+padding:120px 8%;
+background:#0b0b12;
+}
+
+.project-details h2{
+font-size:32px;
+margin-bottom:20px;
+color:#F59E0B;
+}
+
+.project-details p{
+color:#ccc;
+line-height:1.8;
+}
+
+/* BACK BUTTON */
+.back-link{
+position:absolute;
+top:30px;
+left:30px;
+color:#F59E0B;
+text-decoration:none;
+font-weight:600;
+z-index:5;
+}
+
+.back-link:hover{
+opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-link">← Back to Home</a>
+
+<section class="project-hero">
+<div class="overlay"></div>
+<div class="hero-content">
+<h1>Brand Name</h1>
+<p>Visual Identity Design</p>
+</div>
 </section>
+
+<section class="project-intro">
+<h2>About The Project</h2>
+<p>
+This visual identity was created to build a powerful and modern brand presence.
+The goal was to design a clean and strategic identity system that reflects professionalism and clarity.
+</p>
+</section>
+
 <section class="project-details">
-
 <h2>Project Details</h2>
-
 <p>
 Industry: Food & Beverage<br>
 Scope: Logo, Color System, Typography<br>
 Year: 2026
 </p>
-
 </section>
+
 </body>
+</html>
