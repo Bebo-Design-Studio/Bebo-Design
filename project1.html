@@ -19,7 +19,7 @@ color:#fff;
 /* HERO */
 .project-hero{
 position:relative;
-height:80vh;
+height:90vh;
 background:url('images/visual1.webp') center/cover no-repeat;
 display:flex;
 align-items:center;
@@ -36,24 +36,10 @@ background:rgba(0,0,0,0.6);
 .hero-content{
 position:relative;
 z-index:2;
-animation:fadeUp 1s ease forwards;
-opacity:0;
-}
-
-@keyframes fadeUp{
-from{
-transform:translateY(30px);
-opacity:0;
-}
-to{
-transform:translateY(0);
-opacity:1;
-}
 }
 
 .hero-content h1{
 font-size:60px;
-font-weight:800;
 color:#F59E0B;
 margin-bottom:10px;
 }
@@ -63,142 +49,92 @@ font-size:20px;
 color:#ccc;
 }
 
-/* INTRO */
-.project-intro{
+/* GALLERY */
+.project-gallery{
 padding:120px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
 background:#0f0f1a;
 }
 
-.project-intro h2{
-font-size:32px;
-margin-bottom:20px;
-color:#F59E0B;
+.project-gallery img{
+width:100%;
+border-radius:20px;
 }
 
-.project-intro p{
-max-width:700px;
-line-height:1.8;
-color:#ccc;
-}
-
-/* DETAILS */
-.project-details{
+/* COLORS */
+.project-colors{
 padding:120px 8%;
+text-align:center;
 background:#0b0b12;
 }
 
-.project-details h2{
-font-size:32px;
-margin-bottom:20px;
+.project-colors h2{
 color:#F59E0B;
+margin-bottom:60px;
 }
 
-.project-details p{
-color:#ccc;
-line-height:1.8;
-}
-
-/* BACK BUTTON */
-.back-link{
-position:absolute;
-top:30px;
-left:30px;
-color:#F59E0B;
-text-decoration:none;
-font-weight:600;
-z-index:5;
-}
-
-.back-link:hover{
-opacity:0.8;
-}
-.details-container{
+.colors{
 display:flex;
-gap:80px;
-align-items:center;
-max-width:1100px;
-margin:auto;
+justify-content:center;
+gap:40px;
 flex-wrap:wrap;
 }
 
-.details-text{
-flex:1;
-}
-
-.details-image{
-flex:1;
-}
-
-.details-image img{
-width:100%;
-border-radius:15px;
-}
-  .visual-showcase{
-padding:120px 8%;
-background:#0f0f1a;
-}
-
-.visual-showcase h2{
-font-size:32px;
-color:#F59E0B;
-margin-bottom:60px;
-text-align:center;
-}
-
-.visual-showcase img{
-width:100%;
-margin-bottom:60px;
+.color-box{
+width:120px;
+height:120px;
 border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.color-box:hover{
+transform:scale(1.1);
 }
 </style>
 </head>
 
-<body>
+<body><body>
 
-<a href="index.html" class="back-link">← Back to Home</a>
-
+<!-- HERO COVER -->
 <section class="project-hero">
-<div class="overlay"></div>
-<div class="hero-content">
-<h1>Brand Name</h1>
-<p>Visual Identity Design</p>
-</div>
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Brand Name</h1>
+    <p>Visual Identity Design</p>
+  </div>
 </section>
 
-<section class="project-intro">
-<h2>About The Project</h2>
-<p>
-This visual identity was created to build a powerful and modern brand presence.
-The goal was to design a clean and strategic identity system that reflects professionalism and clarity.
-</p>
+<!-- PROJECT GALLERY -->
+<section class="project-gallery">
+  <img src="images/visual1.webp">
+  <img src="images/visual2.webp">
+  <img src="images/visual3.webp">
+  <img src="images/visual4.webp">
 </section>
 
-<section class="project-details">
-<div class="details-container">
+<!-- COLOR PALETTE -->
+<section class="project-colors">
+  <h2>Color Palette</h2>
 
-<div class="details-text">
-<h2>Project Details</h2>
-<p>
-Industry: Food & Beverage<br>
-Scope: Logo, Color System, Typography<br>
-Year: 2026
-</p>
-</div>
-
-<div class="details-image">
-<img src="images/visual1.webp">
-</div>
-
-</div>
-</section>
-  <section class="visual-showcase">
-
-<h2>Visual Showcase</h2>
-
-<img src="images/visual1.webp">
-<img src="images/visual2.webp">
-<img src="images/visual3.webp">
+  <div class="colors">
+    <div class="color-box" data-color="#F59E0B" style="background:#F59E0B"></div>
+    <div class="color-box" data-color="#111827" style="background:#111827"></div>
+    <div class="color-box" data-color="#FFFFFF" style="background:#FFFFFF"></div>
+  </div>
 
 </section>
+
+<script>
+document.querySelectorAll(".color-box").forEach(box => {
+  box.addEventListener("click", () => {
+    alert(box.getAttribute("data-color"));
+  });
+});
+</script>
+
+</body></section>
 </body>
 </html>
