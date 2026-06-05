@@ -193,7 +193,23 @@ overflow:hidden;
 border-radius:12px;
 flex: 0 0 auto;
 }
+.project-title{
+position:absolute;
+bottom:20px;
+left:20px;
+color:#fff;
+font-size:20px;
+font-weight:600;
+opacity:0;
+transform:translateY(20px);
+transition:0.4s ease;
+z-index:2;
+}
 
+.image-box:hover .project-title{
+opacity:1;
+transform:translateY(0);
+}
 .image-box img{
 width:100%;
 display:block;
@@ -446,6 +462,7 @@ min-width:220px;
 
 <a href="project1.html" class="image-box">
 <img src="images/projects/project1/visual1.webp">
+<div class="project-title">DUBAI Brand Identity</div>
 </a>
 
 <a href="project2.html" class="image-box">
