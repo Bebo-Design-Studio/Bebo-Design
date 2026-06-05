@@ -561,10 +561,29 @@ document.querySelectorAll('.scroll-gallery').forEach(gallery => {
 let isDown = false;
 let startX;
 let scrollLeft;
+let autoSpeed = 0.5;
+let autoMove;
+function startAutoMove(){
+autoMove = requestAnimationFrame(move);
+}
 
+function move(){
+gallery.scrollLeft += autoSpeed;
 
+if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth) {
+gallery.scrollLeft = 0;
+}
+
+autoMove = requestAnimationFrame(move);
+}
+
+function stopAutoMove(){
+cancelAnimationFrame(autoMove);
+}
+  startAutoMove();
 gallery.addEventListener('mousedown', (e) => {
-isDown = true;
+stopAutoMove();
+  isDown = true;
 gallery.classList.add('active');
 startX = e.pageX - gallery.offsetLeft;
 scrollLeft = gallery.scrollLeft;
@@ -573,11 +592,13 @@ scrollLeft = gallery.scrollLeft;
 gallery.addEventListener('mouseleave', () => {
 isDown = false;
 gallery.classList.remove('active');
+startAutoMove();
 });
 
 gallery.addEventListener('mouseup', () => {
 isDown = false;
 gallery.classList.remove('active');
+startAutoMove();
 });
 
 gallery.addEventListener('mousemove', (e) => {
@@ -597,6 +618,7 @@ scrollLeft = gallery.scrollLeft;
 
 gallery.addEventListener('touchend', () => {
 isDown = false;
+startAutoMove();
 });
 
 gallery.addEventListener('touchmove', (e) => {
