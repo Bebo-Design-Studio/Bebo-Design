@@ -159,8 +159,8 @@ color:#F59E0B;
 display:flex;
 gap:30px;
 overflow-x:auto;
-scroll-behavior:smooth;
-cursor:grab;
+scroll-behavior:auto;
+  cursor:grab;
 padding-bottom:10px;
 }
 
@@ -176,11 +176,9 @@ cursor:grabbing;
 height:280px;
 min-width:320px;
 width:auto;
-  flex-shrink:0;
-border-radius:15px;
-transition:0.3s;
+user-select:none;
+pointer-events:none;
 }
-
 
 .scroll-gallery img:hover{
 transform:scale(1.05);
@@ -557,58 +555,83 @@ sec.classList.add('show');
 }
 });
 });
- document.querySelectorAll('.scroll-gallery').forEach(gallery => {
 
-let isDragging = false;
+document.querySelectorAll('.scroll-gallery').forEach(gallery => {
+
+let isDown = false;
 let startX;
 let scrollLeft;
-let autoSpeed = 0.6;
+let velocity = 0;
+let momentumID;
 
-function autoMove() {
-if (!isDragging) {
-gallery.scrollLeft += autoSpeed;
-}
-requestAnimationFrame(autoMove);
-}
-autoMove();
-
-// Mouse
 gallery.addEventListener('mousedown', (e) => {
-isDragging = true;
-startX = e.pageX;
+isDown = true;
+gallery.classList.add('active');
+startX = e.pageX - gallery.offsetLeft;
 scrollLeft = gallery.scrollLeft;
-});
-
-gallery.addEventListener('mousemove', (e) => {
-if (!isDragging) return;
-const walk = (e.pageX - startX);
-gallery.scrollLeft = scrollLeft - walk;
-});
-
-gallery.addEventListener('mouseup', () => {
-isDragging = false;
+cancelMomentumTracking();
 });
 
 gallery.addEventListener('mouseleave', () => {
-isDragging = false;
+isDown = false;
+gallery.classList.remove('active');
+beginMomentumTracking();
 });
 
-// Touch
-gallery.addEventListener('touchstart', (e) => {
-isDragging = true;
-startX = e.touches[0].pageX;
-scrollLeft = gallery.scrollLeft;
+gallery.addEventListener('mouseup', () => {
+isDown = false;
+gallery.classList.remove('active');
+beginMomentumTracking();
 });
 
-gallery.addEventListener('touchmove', (e) => {
-if (!isDragging) return;
-const walk = (e.touches[0].pageX - startX);
+gallery.addEventListener('mousemove', (e) => {
+if(!isDown) return;
+e.preventDefault();
+const x = e.pageX - gallery.offsetLeft;
+const walk = (x - startX);
+velocity = walk;
 gallery.scrollLeft = scrollLeft - walk;
 });
 
-gallery.addEventListener('touchend', () => {
-isDragging = false;
+/* Touch */
+gallery.addEventListener('touchstart', (e) => {
+isDown = true;
+startX = e.touches[0].pageX;
+scrollLeft = gallery.scrollLeft;
+cancelMomentumTracking();
 });
+
+gallery.addEventListener('touchend', () => {
+isDown = false;
+beginMomentumTracking();
+});
+
+gallery.addEventListener('touchmove', (e) => {
+if(!isDown) return;
+const x = e.touches[0].pageX;
+const walk = (x - startX);
+velocity = walk;
+gallery.scrollLeft = scrollLeft - walk;
+});
+
+/* Smooth Momentum */
+function beginMomentumTracking(){
+cancelMomentumTracking();
+momentumID = requestAnimationFrame(momentumLoop);
+}
+
+function cancelMomentumTracking(){
+cancelAnimationFrame(momentumID);
+}
+
+function momentumLoop(){
+gallery.scrollLeft -= velocity;
+velocity *= 0.95;
+
+if(Math.abs(velocity) > 0.5){
+momentumID = requestAnimationFrame(momentumLoop);
+}
+}
 
 });
   window.addEventListener('load', () => {
