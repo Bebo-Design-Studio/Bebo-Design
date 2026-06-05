@@ -561,7 +561,7 @@ document.querySelectorAll('.scroll-gallery').forEach(gallery => {
 let isDown = false;
 let startX;
 let scrollLeft;
-let autoSpeed = 0.5;
+let autoSpeed = 0.4;
 let autoMove;
 function startAutoMove(){
 autoMove = requestAnimationFrame(move);
@@ -570,7 +570,7 @@ autoMove = requestAnimationFrame(move);
 function move(){
 gallery.scrollLeft += autoSpeed;
 
-if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth) {
+if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1) {
 gallery.scrollLeft = 0;
 }
 
@@ -611,7 +611,8 @@ gallery.scrollLeft = scrollLeft - walk;
 
 /* Touch */
 gallery.addEventListener('touchstart', (e) => {
-isDown = true;
+stopAutoMove();
+  isDown = true;
 startX = e.touches[0].pageX;
 scrollLeft = gallery.scrollLeft;
 });
