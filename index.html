@@ -607,25 +607,6 @@ gallery.scrollLeft = scrollLeft - walk;
 
 });
 
-/* Smooth Momentum */
-function beginMomentumTracking(){
-cancelMomentumTracking();
-momentumID = requestAnimationFrame(momentumLoop);
-}
-
-function cancelMomentumTracking(){
-cancelAnimationFrame(momentumID);
-}
-
-function momentumLoop(){
-gallery.scrollLeft -= velocity;
-velocity *= 0.84;
-
-if(Math.abs(velocity) > 0.5){
-momentumID = requestAnimationFrame(momentumLoop);
-}
-}
-
 });
   window.addEventListener('load', () => {
 const loader = document.getElementById('loader');
