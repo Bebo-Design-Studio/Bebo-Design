@@ -561,44 +561,27 @@ document.querySelectorAll('.scroll-gallery').forEach(gallery => {
 let isDown = false;
 let startX;
 let scrollLeft;
-let autoSpeed = 0.4;
-let autoMove;
-function startAutoMove(){
-autoMove = requestAnimationFrame(move);
-}
+let velocity = 0;
+let momentumID;
 
-function move(){
-gallery.scrollLeft += autoSpeed;
-
-if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1) {
-gallery.scrollLeft = 0;
-}
-
-autoMove = requestAnimationFrame(move);
-}
-
-function stopAutoMove(){
-cancelAnimationFrame(autoMove);
-}
-  startAutoMove();
 gallery.addEventListener('mousedown', (e) => {
-stopAutoMove();
-  isDown = true;
+isDown = true;
 gallery.classList.add('active');
 startX = e.pageX - gallery.offsetLeft;
 scrollLeft = gallery.scrollLeft;
+cancelMomentumTracking();
 });
 
 gallery.addEventListener('mouseleave', () => {
 isDown = false;
 gallery.classList.remove('active');
-startAutoMove();
+beginMomentumTracking();
 });
 
 gallery.addEventListener('mouseup', () => {
 isDown = false;
 gallery.classList.remove('active');
-startAutoMove();
+beginMomentumTracking();
 });
 
 gallery.addEventListener('mousemove', (e) => {
@@ -606,35 +589,49 @@ if(!isDown) return;
 e.preventDefault();
 const x = e.pageX - gallery.offsetLeft;
 const walk = (x - startX);
+velocity = walk;
 gallery.scrollLeft = scrollLeft - walk;
 });
 
 /* Touch */
 gallery.addEventListener('touchstart', (e) => {
-stopAutoMove();
-  isDown = true;
+isDown = true;
 startX = e.touches[0].pageX;
 scrollLeft = gallery.scrollLeft;
+cancelMomentumTracking();
 });
 
 gallery.addEventListener('touchend', () => {
 isDown = false;
-startAutoMove();
+beginMomentumTracking();
 });
 
 gallery.addEventListener('touchmove', (e) => {
 if(!isDown) return;
 const x = e.touches[0].pageX;
 const walk = (x - startX);
+velocity = walk;
 gallery.scrollLeft = scrollLeft - walk;
 });
 
 /* Smooth Momentum */
+function beginMomentumTracking(){
+cancelMomentumTracking();
+momentumID = requestAnimationFrame(momentumLoop);
+}
 
+function cancelMomentumTracking(){
+cancelAnimationFrame(momentumID);
+}
 
+function momentumLoop(){
+gallery.scrollLeft -= velocity;
+velocity *= 0.84;
 
-
-
+if(Math.abs(velocity) > 0.5){
+momentumID = requestAnimationFrame(momentumLoop);
+}
+}
 
 });
   window.addEventListener('load', () => {
