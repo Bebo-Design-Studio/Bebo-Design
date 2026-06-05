@@ -626,7 +626,7 @@ cancelAnimationFrame(momentumID);
 
 function momentumLoop(){
 gallery.scrollLeft -= velocity;
-velocity *= 0.88;
+velocity *= 0.84;
 
 if(Math.abs(velocity) > 0.5){
 momentumID = requestAnimationFrame(momentumLoop);
