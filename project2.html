@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Name – Visual Identity</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Montserrat',sans-serif;
+background:#0b0b12;
+color:#fff;
+}
+
+/* HERO */
+.project-hero{
+position:relative;
+height:90vh;
+background:url('images/projects/project1/cover.webp') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+  @media (max-width:768px){
+.project-hero{
+background:url('images/projects/project1/cover-mobile.webp') center/cover no-repeat;
+}
+}
+
+.project-hero .overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero-content h1{
+font-size:60px;
+color:#F59E0B;
+margin-bottom:10px;
+}
+
+.hero-content p{
+font-size:20px;
+color:#ccc;
+}
+@keyframes fadeUp{
+from{
+transform:translateY(40px);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+/* GALLERY */
+.project-gallery{
+max-width:1300px;   /* مهم جدًا */
+margin:0 auto;      /* يخلي الجاليري في النص */
+padding:120px 8%;
+background:#0f0f1a;
+column-count:3;
+column-gap:40px;
+}
+
+
+.project-gallery img{
+width:100%;
+margin-bottom:40px;
+border-radius:20px;
+break-inside:avoid;
+
+opacity:0;
+transform:translateY(60px) scale(0.95);
+transition:all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-gallery img.show{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+  @media (max-width: 1200px){
+.project-gallery{
+column-count:2;
+}
+}
+
+@media (max-width: 768px){
+.project-gallery{
+column-count:1;
+padding:80px 5%;
+}
+}
+
+
+  /* COLORS */
+.project-colors{
+padding:120px 8%;
+text-align:center;
+background:#0b0b12;
+}
+
+.project-colors h2{
+color:#F59E0B;
+margin-bottom:60px;
+}
+
+.colors{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.color-box{
+width:120px;
+height:120px;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.color-box:hover{
+transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO COVER -->
+<section class="project-hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+  
+  </div>
+</section>
+
+<!-- PROJECT GALLERY -->
+<section class="project-gallery">
+  <img src="images/projects/project1/mockup1.webp">
+<img src="images/projects/project1/mockup2.webp">
+<img src="images/projects/project1/mockup3.webp">
+  <img src="images/projects/project1/mockup4.webp">
+  <img src="images/projects/project1/mockup5.webp">
+  <img src="images/projects/project1/mockup6.webp">
+</section>
+
+<!-- COLOR PALETTE -->
+<section class="project-colors">
+  <h2>Color Palette</h2>
+
+  <div class="colors">
+    <div class="color-box" data-color="#02709b" style="background:#02709b"></div>
+    <div class="color-box" data-color="#0c0a0a" style="background:#0c0a0a"></div>
+    <div class="color-box" data-color="#FFFFFF" style="background:#FFFFFF"></div>
+  </div>
+
+</section>
+
+<script>
+document.querySelectorAll(".color-box").forEach(box => {
+  box.addEventListener("click", () => {
+    alert(box.getAttribute("data-color"));
+  });
+});
+</script>
+<script>
+const images = document.querySelectorAll(".project-gallery img");
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+
+const index = Array.from(images).indexOf(entry.target);
+
+setTimeout(() => {
+entry.target.classList.add("show");
+}, index * 150);
+
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.2 });
+
+images.forEach(img => {
+observer.observe(img);
+});
+</script>
+</body>
+</html>
